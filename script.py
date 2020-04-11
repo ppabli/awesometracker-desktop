@@ -7,7 +7,7 @@ import requests
 
 if sys.platform in ['Windows', 'win32']:
 
-	import win32gui
+	from win32 import win32gui
 
 else:
 
@@ -74,9 +74,8 @@ class Script:
 						if seconds >= self.user['diff']:
 
 							url = "http://awesometracker.ddns.net/addLog"
-							headers = {'token': '$2a$13$x.FUGlu.3NW8bJg5qwdFJ.9bJrC71o6RWkLGF3A6RksyA7qfpgj9G'}
-							data = {'userCode': self.user['code'], 'app': str(self.actualWindowName), 'start': str(self.startDate), 'stop': str(self.endDate)}
-							r = requests.post(url = url, headers = headers, data = data)
+							data = {'userCode': self.user['code'], 'trackerLogs.app': str(self.actualWindowName), 'trackerLogs.start': str(self.startDate), 'trackerLogs.stop': str(self.endDate)}
+							r = requests.post(url = url, data = data)
 
 						self.frame.winfo_children()[1]['text'] = "Last window: " + self.actualWindowName + " - Time: " + str(seconds)
 
@@ -94,14 +93,11 @@ class Script:
 
 			if seconds >= self.user['diff']:
 
-				url = "http://awesometracker.ddns.net/api/v1/users/" + str(self.user['code']) + '/trackerLogs'
-				headers = {'token': '$2a$13$x.FUGlu.3NW8bJg5qwdFJ.9bJrC71o6RWkLGF3A6RksyA7qfpgj9G'}
-				data = {'app': str(self.actualWindowName), 'start': str(self.startDate), 'stop': str(self.endDate)}
-				r = requests.post(url = url, headers = headers, data = data)
+				url = "http://awesometracker.ddns.net/addLog"
+				data = {'userCode': self.user['code'], 'trackerLogs.app': str(self.actualWindowName), 'trackerLogs.start': str(self.startDate), 'trackerLogs.stop': str(self.endDate)}
+				r = requests.post(url = url, data = data)
 
 		except Exception as e:
-
-			print(e)
 
 			f = open('errors.log', 'a')
 			f.write(str(datetime.datetime.now()) + str(e) + "\r\n")
