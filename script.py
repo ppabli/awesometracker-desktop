@@ -13,7 +13,6 @@ else:
 
 	from AppKit import NSWorkspace
 
-# inicializacion de la clase
 class Script:
 
 	def __init__(self, user, frame):
@@ -51,7 +50,6 @@ class Script:
 
 				self.frame.winfo_children()[0]['text'] = 'Actual window: ' + self.actualWindowName
 
-				# revisa que sistema operativo esta usando el script para seleccionar correctamente el nombre de la aplicacion
 				if sys.platform in ['darwin']:
 
 					newWindowName = str(NSWorkspace.sharedWorkspace().activeApplication()['NSApplicationName'])
@@ -71,10 +69,10 @@ class Script:
 
 						seconds = dif.seconds
 
-						if seconds >= self.user['diff']:
+						if seconds >= self.user['users.diff']:
 
-							url = "http://awesometracker.ddns.net/addLog"
-							data = {'userCode': self.user['code'], 'trackerLogs.app': str(self.actualWindowName), 'trackerLogs.start': str(self.startDate), 'trackerLogs.stop': str(self.endDate)}
+							url = "https://awesometracker.ddns.net/addLog"
+							data = {'userCode': self.user['users.code'], 'trackerLogs.app': str(self.actualWindowName), 'trackerLogs.start': str(self.startDate), 'trackerLogs.stop': str(self.endDate)}
 							r = requests.post(url = url, data = data)
 
 						self.frame.winfo_children()[1]['text'] = "Last window: " + self.actualWindowName + " - Time: " + str(seconds)
@@ -91,10 +89,10 @@ class Script:
 
 			seconds = dif.seconds
 
-			if seconds >= self.user['diff']:
+			if seconds >= self.user['users.diff']:
 
-				url = "http://awesometracker.ddns.net/addLog"
-				data = {'userCode': self.user['code'], 'trackerLogs.app': str(self.actualWindowName), 'trackerLogs.start': str(self.startDate), 'trackerLogs.stop': str(self.endDate)}
+				url = "https://awesometracker.ddns.net/addLog"
+				data = {'userCode': self.user['users.code'], 'trackerLogs.app': str(self.actualWindowName), 'trackerLogs.start': str(self.startDate), 'trackerLogs.stop': str(self.endDate)}
 				r = requests.post(url = url, data = data)
 
 		except Exception as e:
