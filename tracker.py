@@ -90,7 +90,7 @@ class LoginWindow():
 
 		if self.frame == None:
 
-			self.frame = Frame(self.window, bg="#84e8e8", height = self.window.winfo_height(), width = self.window.winfo_width())
+			self.frame = Frame(self.window, bg = "#84e8e8", height = self.window.winfo_height(), width = self.window.winfo_width())
 			self.frame.pack(fill = BOTH, expand = 1)
 
 		else:
@@ -102,7 +102,7 @@ class LoginWindow():
 			self.frame.columnconfigure(0, weight = 1)
 			self.frame.columnconfigure(1, weight = 1)
 
-			self.frame.rowconfigure(0, weight=1)
+			self.frame.rowconfigure(0, weight = 1)
 			self.frame.rowconfigure(1, weight = 1)
 			self.frame.rowconfigure(2, weight = 1)
 			self.frame.rowconfigure(3, weight = 1)
@@ -117,7 +117,7 @@ class LoginWindow():
 		self.userLabel.grid(row = 1, column = 0, sticky = N + S + E + W)
 
 		self.userInput = ttk.Entry(self.frame)
-		self.userInput.grid(row = 1, column = 1,  sticky = N + S + E + W)
+		self.userInput.grid(row = 1, column = 1, sticky = N + S + E + W)
 
 		self.passwordLabel = Label(self.frame, text = "Password", bg = "#4EF037", relief = "solid", font = ("arial", 12, "bold"))
 		self.passwordLabel.grid(row = 2, column = 0, sticky = N + S + E + W)
@@ -152,10 +152,10 @@ class LoginWindow():
 
 			self.clean(self.userInput, self.passwordInput)
 
-			self.errorLabel1 = Label(self.frame, text="User or password invalid", bg="red", relief="solid", font=("arial", 12, "bold"))
+			self.errorLabel1 = Label(self.frame, text = "User or password invalid", bg = "red", relief = "solid", font = ("arial", 12, "bold"))
 			self.errorLabel1.grid(row = 4, column = 0, columnspan = 2, sticky = N + S + E + W)
 
-			self.errorLabel2 = Button(self.frame, text="Forgot password", bg="red", relief="solid", font=("arial", 12, "bold"), command = lambda: webbrowser.open('https://awesometracker.ddns.net/forgotPassword', new=2))
+			self.errorLabel2 = Button(self.frame, text = "Forgot password", bg = "red", relief = "solid", font = ("arial", 12, "bold"), command = lambda: webbrowser.open('https://awesometracker.ddns.net/forgotPassword', new = 2))
 			self.errorLabel2.grid(row = 5, column = 0, columnspan = 2, sticky = N + S + E + W)
 
 
@@ -192,35 +192,35 @@ class TrackerWindow:
 
 		if self.frame == None:
 
-			self.frame = Frame(self.window, bg="#F4F133")
+			self.frame = Frame(self.window, bg = "#F4F133")
 			self.frame.pack(fill = BOTH, expand = 1)
 
 		else:
 
 			self.frame.pack_forget()
-			self.frame = Frame(self.window, bg="#F4F133")
+			self.frame = Frame(self.window, bg = "#F4F133")
 			self.frame.pack(fill = BOTH, expand = 1)
 
-		self.generalFrame = Frame(self.frame, bg="#84e8e8")
-		self.generalFrame.pack(fill=X, anchor=N)
+		self.generalFrame = Frame(self.frame, bg = "#84e8e8")
+		self.generalFrame.pack(fill = X, anchor = N)
 
-		self.menuFrame = Frame(self.frame, bg="#EEEEEE")
-		self.menuFrame.pack(fill=Y, side=LEFT, anchor=N + W)
+		self.menuFrame = Frame(self.frame, bg = "#EEEEEE")
+		self.menuFrame.pack(fill = Y, side = LEFT, anchor = N + W)
 
-		self.contentFrame = Frame(self.frame, bg="white")
-		self.contentFrame.pack(fill=BOTH, anchor=CENTER, expand=1)
+		self.contentFrame = Frame(self.frame, bg = "white")
+		self.contentFrame.pack(fill = BOTH, anchor = CENTER, expand = 1)
 
-		self.mainLabel = Label(self.generalFrame, text="User: " + str(user['users.user']) + " | User code: " + str(user['users.code']), bg="#4EF037", relief="solid", font=("arial", 12, "bold"))
-		self.mainLabel.pack(fill=BOTH, anchor=CENTER, expand=1)
+		self.mainLabel = Label(self.generalFrame, text = "User: " + str(user['users.user']) + " | User code: " + str(user['users.code']), bg = "#4EF037", relief = "solid", font = ("arial", 12, "bold"))
+		self.mainLabel.pack(fill = BOTH, anchor = CENTER, expand = 1)
 
-		self.optionsLabel = Label(self.menuFrame, text="Options", bg="#4EF037", relief="solid", font=("arial", 12, "bold"))
-		self.optionsLabel.grid(row=0, column=0, sticky=N + S + E + W)
+		self.optionsLabel = Label(self.menuFrame, text = "Options", bg = "#4EF037", relief = "solid", font = ("arial", 12, "bold"))
+		self.optionsLabel.grid(row = 0, column = 0, sticky = N + S + E + W)
 
-		self.optionsButton = Button(self.menuFrame, text="Actions", bg = "#84e8e8", font = ("arial", 12, "bold"), command = lambda: self.changeFrame("options", user))
-		self.optionsButton.grid(row=1, column=0, sticky=N + S + E + W)
+		self.optionsButton = Button(self.menuFrame, text = "Actions", bg = "#84e8e8", font = ("arial", 12, "bold"), command = lambda: self.changeFrame("options", user))
+		self.optionsButton.grid(row = 1, column=0, sticky=N + S + E + W)
 
 		self.logOutButton = Button(self.menuFrame, text = "Log out", bg = "#84e8e8", font = ("arial", 12, "bold"), command = lambda: self.logOut())
-		self.logOutButton.grid(row=2, column=0, sticky=N + S + E + W)
+		self.logOutButton.grid(row = 2, column = 0, sticky = N + S + E + W)
 
 	def changeFrame(self, option, user,):
 
@@ -230,19 +230,19 @@ class TrackerWindow:
 			self.contentFrame = Frame(self.frame, bg="white")
 			self.contentFrame.pack(fill = BOTH, anchor = CENTER, expand = 1)
 
-			appLabel = Label(self.contentFrame, text="Actual window: No one", bg = "#4EF037", relief="solid", font=("arial", 12, "bold"))
+			appLabel = Label(self.contentFrame, text = "Actual window: No one", bg = "#4EF037", relief = "solid", font = ("arial", 12, "bold"))
 			appLabel.pack(fill = BOTH, anchor = CENTER, expand = 1)
 
-			lastAppLabel = Label(self.contentFrame, text="Last window: No one", bg="#4EF037", relief="solid", font=("arial", 12, "bold"))
+			lastAppLabel = Label(self.contentFrame, text = "Last window: No one", bg = "#4EF037", relief = "solid", font = ("arial", 12, "bold"))
 			lastAppLabel.pack(fill = BOTH, anchor = CENTER, expand = 1)
 
-			startButton = Button(self.contentFrame, text="Start Tracker", bg="#84e8e8", font=("arial", 12, "bold"), command=lambda: self.start(user))
+			startButton = Button(self.contentFrame, text = "Start Tracker", bg = "#84e8e8", font = ("arial", 12, "bold"), command = lambda: self.start(user))
 			startButton.pack(fill = BOTH, anchor=CENTER, expand = 1)
 
-			stopButton = Button(self.contentFrame, text="Stop Tracker", bg="#84e8e8", font=("arial", 12, "bold"), command=lambda: self.stop())
+			stopButton = Button(self.contentFrame, text = "Stop Tracker", bg = "#84e8e8", font = ("arial", 12, "bold"), command = lambda: self.stop())
 			stopButton.pack(fill = BOTH, anchor = CENTER, expand = 1)
 
-			statusLabel = Label(self.contentFrame, text="Tracker status: Stopped", bg="#4EF037", relief="solid", font=("arial", 12, "bold"))
+			statusLabel = Label(self.contentFrame, text = "Tracker status: Stopped", bg = "#4EF037", relief = "solid", font = ("arial", 12, "bold"))
 			statusLabel.pack(fill = BOTH, anchor = CENTER, expand = 1)
 
 	def start(self, user):
